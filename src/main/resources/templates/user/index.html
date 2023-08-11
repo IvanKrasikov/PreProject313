@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>User</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        .d1 {
+            position: relative;
+        }
+
+        .d2 {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 0%);
+        }
+    </style>
+</head>
+<body>
+<div class="d1">
+    <div class="d2">
+        <table>
+            <tr>
+                <th colspan="2" style="text-align: center">
+                    User
+                </th>
+            </tr>
+            <tr>
+                <td>Id:</td>
+                <td th:text="${user.getId()}"/>
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td th:text="${user.getName()}"/>
+            </tr>
+            <tr>
+                <td>LastName:</td>
+                <td th:text="${user.getLastName()}"/>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td th:text="${user.getEmail()}"/>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td th:text="${user.getPassword()}"/>
+            </tr>
+            <tr>
+                <td>Roles:</td>
+                <td>
+                    <table>
+                        <tr th:each="role : ${user.getRoles()}">
+                            <td th:text="${role.getAuthority()}"/>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><a href="/logout">Exit</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
